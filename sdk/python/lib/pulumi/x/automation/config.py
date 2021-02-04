@@ -25,9 +25,12 @@ class ConfigValue:
     value: str
     secret: bool = False
 
-    def __init__(self, value: str, secret: bool = False):
+    def __init__(self, value: str, objectValue: dict = {}, secret: bool = False):
         self.value = value
         self.secret = secret
+        
+        if objectValue:
+            self.objectValue = objectValue
 
     def __repr__(self):
         return _SECRET_SENTINEL if self.secret else repr(self.value)
